@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Mozjpeg.js - The native javascript jpg optimizer.</title>
+    <meta name="description" content="Mozjpeg.js - The native javascript jpg optimizer.">
+    <meta name="keywords" content="jpg,jpeg,optimizer,optimize,mozjpeg,javascript,emscript">
+    <meta name="author" content="LI-NA">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mozjpeg.js</h1>
+            <p class="text-muted">Optimize and process jpeg file on browser.</p>
+        </header>
+        <div class="main">
+            <h3>Demo</h3>
+            <div class="dragArea">
+                <div class="info">
+                    <div class="h2 text-muted">Drag png file here</div>
+                    <div class="text-muted">or...</div>
+                    <div class="btn">
+                        <input type="file" id="fileSelect" accept="image/jpeg" style="display:none">
+                        <button id="uploadBtn" class="btn btn-outline-dark" onclick="document.getElementById('fileSelect').click()">Select file</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="imageArea inputImageArea" style="display: none">
+                <p class="text-muted">Input image (<span class="inputSize">100 KB</span>)</p>
+                <img class="inputImage img-thumbnail img-fluid" alt="input image">
+            </div>
+            <div class="imageArea outputImageArea" style="display: none">
+                <p class="text-muted">Output image (<span class="outputSize">100 KB</span>)</p>
+                <img class="outputImage img-thumbnail img-fluid" alt="output image">
+            </div>
+
+            <form class="optionArea">
+                <div class="form-group">
+                    <label for="qualityInput">Quality</label>
+                    <div class="row">
+                        <div class="col-sm-2 qualityNumber">
+                            <input type="number" class="form-control form-control-sm" id="qualityInput" min="0" max="100" value="85" readonly>
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="range" class="form-control-range range-slider" id="qualityRange" min="0" max="100" value="85" oninput="$('#qualityInput').val($(this).val());" onchange="$('#qualityInput').val($(this).val());">
+                        </div>
+                    </div>
+                    <small class="form-text text-muted">This value is jpeg quality, 0 ~ 100. 100 does not optimize image. 85 is Google PageSpeed recommend value.</small>
+                </div>
+                <div class="form-group">
+                    <label for="options">Extra Options</label>
+                    <input type="text" class="form-control" id="options" value="-progressive">
+                    <small class="form-text text-muted">Enter extra options with '-'. Please check <a href="https://github.com/mozilla/mozjpeg/blob/master/usage.txt" target="_blank">this document</a> for more information.</small>
+                </div>
+                <div class="form-group">
+                    <div><label>Use other commend</label></div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="commendOption" id="commendOption1" value="cjpeg" checked>
+                        <label class="form-check-label" for="commendOption1">cjpeg (default)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="commendOption" id="commendOption2" value="djpeg">
+                        <label class="form-check-label" for="commendOption2">djpeg</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="commendOption" id="commendOption3" value="jpegtran">
+                        <label class="form-check-label" for="commendOption3">jpegtran</label>
+                    </div>
+                    <small class="form-text text-muted">Image optimizer is cjpeg. If you want to use other commend, please enter whole options on "Extra Options". (Quailty will be ignored)</small>
+                    <small class="form-text text-muted">Pro tip: Select jpegtran and use -optimize options will be create lossless optimized image.</small>
+                </div>
+            </form>
+
+            <div class="btnArea text-center">
+                <button type="button" id="optimize" class="btn btn-outline-success btn-lg" disabled>Optimize</button>
+                <button type="button" id="reset" class="btn btn-outline-warning btn-lg" disabled>Reset</button>
+            </div>
+
+            <div class="consoleArea">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Console</p>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <div class="loading">
+                            <div class="icon"></div> Loading worker...
+                        </div>
+                        <div class="loaded" style="display: none">
+                            <div class="icon"></div> Worker is ready!
+                        </div>
+                    </div>
+                </div>
+                <pre class="console"></pre>
+            </div>
+        </div>
+
+        <footer>
+            <p class="text-muted text-center">Demo created by <a href="https://github.com/LI-NA" target="_blank">LI-NA</a> under <a href="https://github.com/LI-NA/optipng.js/blob/master/LICENSE" target="_blank">MIT License</a>.</p>
+        </footer>
+    </div>
+
+    <a href="https://github.com/LI-NA/optipng.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118968822-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        //gtag('js', new Date());
+        //gtag('config', 'UA-118968822-1');
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="js/demo.js"></script>
+</body>
+</html>
