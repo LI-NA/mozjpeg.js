@@ -81,7 +81,7 @@ Those argument is same as cjpeg.
 
 If you are using node.js, you can use like below.
 ```javascript
-var mozjpeg = require("mozjpeg.js");
+var mozjpeg = require("js-mozjpeg");
 // ~~~
 var output_cjpeg = mozjpeg.cjpeg(input, ["-quality", "85"]);
 var output_djpeg = mozjpeg.djpeg(input, ["-grayscale"]);
@@ -92,11 +92,11 @@ var output_jpegtran = mozjpeg.jpegtran(input, ["-rotate", "90"]);
 
 ### Node.js
 ```
-$ npm i -S mozjpeg.js
+$ npm i -S js-mozjpeg
 ```
 
 ```javascript
-var mozjpeg = require("mozjpeg.js");
+var mozjpeg = require("js-mozjpeg");
 // mozjpeg-js is already exist.
 var fs = require("fs");
 
