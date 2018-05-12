@@ -92,11 +92,11 @@ var output_jpegtran = mozjpeg.jpegtran(input, ["-rotate", "90"]);
 
 ### Node.js
 ```
-$ npm i -S optipng-js
+$ npm i -S mozjpeg.js
 ```
 
 ```javascript
-var mozjpeg = require("mozjpegjs");
+var mozjpeg = require("mozjpeg.js");
 // mozjpeg-js is already exist.
 var fs = require("fs");
 
@@ -119,7 +119,7 @@ fs.writeFileSync("output.jpg", output.data);
 ```
 
 ### Browser
-Please check Demo with Web worker. [https://li-na.github.io/optipng.js/](https://li-na.github.io/optipng.js/)
+Please check Demo with Web worker. [https://li-na.github.io/mozjpeg.js/](https://li-na.github.io/mozjpeg.js/)
 
 ## Build
 Actually, I don't know what it is but I made build shell script and it seems working. Please let me know if you have ANY better way to build this project.
