@@ -11,7 +11,7 @@ Tip: Mozjpeg version is Tag 1.5.3 (I just clone git. Check [this tree](https://g
 Please use binary file like readFile on node or Uint8Array (converted from base64) on javascript.
 ```javascript
 // Node.js
-var input = fs.readFileSync("input.png");
+var input = fs.readFileSync("input.jpg");
 var output = mozjpeg.cjpeg(input, ["-quality", "85"]);
 ```
 ```javascript
@@ -105,11 +105,11 @@ var output = mozjpeg.cjpeg(input, ["-quality", "85"]);
 // var output = mozjpeg.cjpeg(input, {quality: "85"});
 // You can also use mozjpeg.djpeg and mozjpeg.jpegtran.
 /*
-    output = {
-        data: output file,
-        stdout: output string,
-        stderr: error string
-    }
+output = {
+    data: output file,
+    stdout: output string,
+    stderr: error string
+}
 */
 
 console.log(output.stdout);
@@ -138,3 +138,5 @@ I refered to [as-com's mozjpeg-js](https://github.com/as-com/mozjpeg-js).
 
 ## License
 [MIT License](LICENSE)
+
+Mozjpeg source is under [libjpeg-turbo Licenses](deps/mozjpeg/LICENSE.md)
