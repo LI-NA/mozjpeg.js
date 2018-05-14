@@ -55,7 +55,14 @@ var options = {quality: "85", optimize: true, progressive: true};
 #### `printFunction`
 This callback function is optional. It will be called if mozjpeg will print something on stdout or stderr.
 ```javascript
+// Node.js
 mozjpeg.cjpeg(input, ["-quality", "85"], function(str) {
+    console.log(str);
+});
+```
+```javascript
+// Browser
+cjpeg(input, ["-quality", "85"], function(str) {
     console.log(str);
 });
 ```
