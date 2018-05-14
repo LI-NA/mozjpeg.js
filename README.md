@@ -139,4 +139,4 @@ I refered to [as-com's mozjpeg-js](https://github.com/as-com/mozjpeg-js).
 ## License
 [MIT License](LICENSE)
 
-Mozjpeg source is under [libjpeg-turbo Licenses](deps/mozjpeg/LICENSE.md)
+Mozjpeg source code is under [libjpeg-turbo Licenses](deps/mozjpeg/LICENSE.md)
