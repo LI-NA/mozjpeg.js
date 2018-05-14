@@ -53,9 +53,9 @@ var options = {quality: "85", optimize: true, progressive: true};
 ```
 
 #### `printFunction`
-This callback function is optional. It will be called if optipng will print something on stdout or stderr.
+This callback function is optional. It will be called if mozjpeg will print something on stdout or stderr.
 ```javascript
-optipng(input, ["-o2"], function(str) {
+mozjpeg.cjpeg(input, ["-quality", "85"], function(str) {
     console.log(str);
 });
 ```
